@@ -1,19 +1,32 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getMovieDetail } from "../actions/movieDetail";
 
 const MovieDetail = () => {
+  const [isSafe, setIsSafe] = useState(false);
   const params = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovieDetail(params.id));
   }, [params.id, dispatch]);
 
-  const { movie, isLoading } = useSelector((state) => state.movieDetail);
+  const { movie } = useSelector((state) => state.movieDetail);
   const imageURL = `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`;
+
+  useEffect(() => {
+    checkImage(
+      imageURL,
+      function () {
+        setIsSafe(true);
+      },
+      function () {
+        setIsSafe(false);
+      }
+    );
+  }, []);
 
   return (
     <Container
@@ -25,7 +38,7 @@ const MovieDetail = () => {
         bounce: 0.25,
       }}
     >
-      {!isLoading && <img src={imageURL} alt={movie.original_title} />}
+      {isSafe && <img src={imageURL} alt={movie.original_title} />}
       <h1>{movie.original_title}</h1>
       <p className="movie-overview">{movie.overview}</p>
       <div className="movie-description-item">

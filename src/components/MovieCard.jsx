@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { checkImage } from "../util";
 
 const MovieCard = ({ movie }) => {
   const navigator = useNavigate();
@@ -8,12 +9,6 @@ const MovieCard = ({ movie }) => {
   const imageURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const [isSafe, setIsSafe] = useState(false);
 
-  function checkImage(imageSrc, good, bad, isSafe) {
-    var img = new Image();
-    img.onload = good;
-    img.onerror = bad;
-    img.src = imageSrc;
-  }
   useEffect(() => {
     checkImage(
       imageURL,
