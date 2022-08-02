@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getMovieDetail } from "../actions/movieDetail";
+import { checkImage } from "../util";
 
 const MovieDetail = () => {
   const [isSafe, setIsSafe] = useState(false);
@@ -13,7 +14,7 @@ const MovieDetail = () => {
     dispatch(getMovieDetail(params.id));
   }, [params.id, dispatch]);
 
-  const { movie } = useSelector((state) => state.movieDetail);
+  const movie = useSelector((state) => state.movieDetail);
   const imageURL = `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`;
 
   useEffect(() => {

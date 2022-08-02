@@ -1,17 +1,10 @@
-const initState = {
-  movie: {},
-  isLoading: true,
-};
-
+const initState = {};
 const movieDetail = (state = initState, action) => {
   switch (action.type) {
     case "GET_DETAIL":
-      return {
-        movie: action.payload,
-        isLoading: false,
-      };
+      return action.payload;
     default:
-      return { ...state, isLoading: true };
+      return state;
   }
 };
 
