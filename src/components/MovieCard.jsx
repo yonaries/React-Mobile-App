@@ -1,15 +1,36 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const MovieCard = ({ movie }) => {
   const navigator = useNavigate();
 
   const imageURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const [isSafe, setIsSafe] = useState(false);
+
+  function checkImage(imageSrc, good, bad, isSafe) {
+    var img = new Image();
+    img.onload = good;
+    img.onerror = bad;
+    img.src = imageSrc;
+  }
+  useEffect(() => {
+    checkImage(
+      imageURL,
+      function () {
+        setIsSafe(true);
+      },
+      function () {
+        setIsSafe(false);
+      }
+    );
+  }, []);
+
   return (
     <Container
       onClick={() => navigator(`/movie/${movie.id}`, { replace: true })}
     >
-      <img src={imageURL} alt="" />
+      {isSafe && <img src={imageURL} alt="" />}
       <div className="text">
         <h3>{movie.original_title}</h3>
         <p>{movie.release_date}</p>
