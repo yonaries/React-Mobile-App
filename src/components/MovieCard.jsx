@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const MovieCard = ({ movie }) => {
   const navigator = useNavigate();
 
-  const imageURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const imageURL = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
   return (
     <Container
       onClick={() => navigator(`/movie/${movie.id}`, { replace: true })}

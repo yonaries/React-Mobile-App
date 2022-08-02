@@ -13,7 +13,7 @@ const MovieDetail = () => {
   }, [params.id, dispatch]);
 
   const { movie, isLoading } = useSelector((state) => state.movieDetail);
-  const imageURL = `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`;
+  const imageURL = `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`;
 
   return (
     <Container
