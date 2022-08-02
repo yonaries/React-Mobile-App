@@ -2,11 +2,13 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import MovieList from "./components/MovieList";
 import MovieDetail from "./components/MovieDetail";
+import FavIcon from "react-favicon";
 
 import { useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
 import { AnimatePresence } from "framer-motion";
+import favIconImage from "./assets/favicon.svg";
 
 function App() {
   const location = useLocation();
@@ -20,6 +22,7 @@ function App() {
 
   return (
     <Container>
+      <FavIcon url={favIconImage} />
       <Header />
       <Nav />
       <AnimatePresence exitBeforeEnter>
