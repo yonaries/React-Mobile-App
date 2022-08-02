@@ -18,7 +18,7 @@ const MovieList = ({ movies, title }) => {
   const dispatch = useDispatch();
   const containerEl = useRef(null);
   useEffect(() => {
-    if (movies.nextPage == 1) {
+    if (movies.nextPage === 1) {
       fetchMovies(location.pathname);
     }
   }, [location]);
@@ -26,7 +26,7 @@ const MovieList = ({ movies, title }) => {
   window.onscroll = function () {
     if (containerEl.current !== null) {
       if (
-        window.innerHeight + window.scrollY ==
+        window.innerHeight + window.scrollY ===
         containerEl.current.offsetHeight + containerEl.current.offsetTop
       ) {
         fetchMovies(location.pathname);

@@ -19,6 +19,9 @@ function App() {
     upcomingMovies,
   } = useSelector((state) => state.movies);
 
+  useEffect(() => {
+    console.log(process.env);
+  }, []);
   return (
     <Container>
       <Header />

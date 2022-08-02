@@ -1,13 +1,6 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import {
-  getNowPlayingMovies,
-  getPopularMovies,
-  getTopRatedMovies,
-  getUpcomingMovies,
-} from "../actions/movies";
 
 const Nav = () => {
   const navigate = useNavigate();
