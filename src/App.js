@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
 import { AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 
 function App() {
   const location = useLocation();

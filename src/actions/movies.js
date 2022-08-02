@@ -1,7 +1,7 @@
 import axios from "axios";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
-const API_KEY = "dc4abdd12b06e1a27b45f8678c0a1a7a";
-const URL = `https://api.themoviedb.org/3`;
+const URL = process.env.REACT_APP_TMDB_URL;
 const popularMovieURL = `${URL}/movie/popular?api_key=${API_KEY}`;
 const latestMovieURL = `${URL}/movie/latest?api_key=${API_KEY}`;
 const nowPlayingMovieURL = `${URL}/movie/now_playing?api_key=${API_KEY}`;

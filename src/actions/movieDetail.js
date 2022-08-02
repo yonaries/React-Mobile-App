@@ -1,6 +1,6 @@
 import axios from "axios";
-const API_KEY = "dc4abdd12b06e1a27b45f8678c0a1a7a";
-const URL = `https://api.themoviedb.org/3`;
+const API_KEY = process.env.REACT_APP_API_KEY;
+const URL = process.env.REACT_APP_TMDB_URL;
 const movieByIdURL = `${URL}/movie/`;
 
 export const getMovieDetail = (movieId) => async (dispatch) => {
@@ -9,5 +9,3 @@ export const getMovieDetail = (movieId) => async (dispatch) => {
   );
   dispatch({ type: "GET_DETAIL", payload: data });
 };
-
-// https://api.themoviedb.org/3/movie/438148?api_key=dc4abdd12b06e1a27b45f8678c0a1a7a
